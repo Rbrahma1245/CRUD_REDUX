@@ -1,7 +1,9 @@
 import { combineReducers } from "redux";
-import Crud from "./Crud";
+import reducerCrud from "./reducerCrud";
 
 
-const rootReducer = combineReducers({ Crud });
+const rootReducer = combineReducers({ reducerCrud });
 
 export default rootReducer;
+
+export type State = ReturnType<typeof rootReducer>

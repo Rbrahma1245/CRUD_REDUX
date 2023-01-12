@@ -13,7 +13,7 @@ function App() {
 
 
   return (
-    <div >
+    <div className='text-center'>
       <Header />
       <Routes>
         <Route path="/" element={<Homepage />} />
