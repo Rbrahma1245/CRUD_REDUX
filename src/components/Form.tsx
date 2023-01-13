@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { handleSubmit, Update } from '../actions';
-import { TInput } from '../reducers/reducerCrud';
+import { RootState } from '../reducers';
+
 
 
 export interface userInput {
@@ -14,7 +15,9 @@ export interface userInput {
 
 const Form: React.FC = () => {
 
-    const editUser = useSelector((state: any) => state.reducerCrud.editUser)
+    const dispatch = useDispatch();
+    const editUser = useSelector((state: RootState) => state.reducerCrud.editUser)
+
 
     const [userField, setUserField] = useState<userInput>({
         name: '',
@@ -22,11 +25,10 @@ const Form: React.FC = () => {
         gender: '',
     });
 
-    const dispatch = useDispatch();
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUserField({ ...userField, [e.target.name]: e.target.value })
     }
+
 
     return (
         <div className='border-2 ml-10 text-center rounded bg-blue-100 h-80'>

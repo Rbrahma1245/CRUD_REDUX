@@ -6,4 +6,4 @@ const rootReducer = combineReducers({ reducerCrud });
 
 export default rootReducer;
 
-export type State = ReturnType<typeof rootReducer>
+export type RootState = ReturnType<typeof rootReducer>

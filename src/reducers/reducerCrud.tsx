@@ -9,8 +9,6 @@ export interface TInput {
 
 
 
-
-
 const initialstate: TInput = {
     editUser: undefined,
     userList: []
@@ -67,7 +65,7 @@ const reducerCrud = (state: TInput = initialstate, action: any) => {
                 }
                 return currElem
             })
-            console.log(newUpdatedList)
+            // console.log(newUpdatedList)
 
             return {
                 ...state,

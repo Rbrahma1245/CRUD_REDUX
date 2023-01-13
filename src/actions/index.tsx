@@ -45,13 +45,11 @@ export const handleDelete = (id: number) => {
 }
 
 export const handleEdit = (id: number) => {
-
     return {
         type: "EDIT",
         payload: id
     }
 }
-
 
 export const Update = (data: userInput): UPDATE => {
     return {
