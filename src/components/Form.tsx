@@ -6,7 +6,7 @@ import { RootState } from '../reducers';
 
 export interface userInput {
     name: string;
-    age: string;
+    age: number;
     gender: string;
     id?: number;
     editUser?: {};
@@ -21,7 +21,7 @@ const Form: React.FC = () => {
     const [userField, setUserField] = useState<userInput>({
         editUser: {},
         name: '',
-        age: '',
+        age: 0,
         gender: '',
     });
 
@@ -30,11 +30,10 @@ const Form: React.FC = () => {
     }
 
 
-
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (userField.name === '' || userField.age === '' || userField.gender === '') {
+        if (userField.name === '' || userField.age === 0 || userField.gender === '') {
             alert("Please fill the details");
         }
         else (
@@ -42,7 +41,7 @@ const Form: React.FC = () => {
             setUserField({
                 editUser: {},
                 name: '',
-                age: '',
+                age: 0,
                 gender: '',
             }
             )
@@ -66,7 +65,7 @@ const Form: React.FC = () => {
                 <input className='h-10 py-2 px-4' type="text" name='name' value={userField.name} placeholder='Enter Your Name' onChange={handleChange} />
 
                 <label>Enter Your Age</label>
-                <input className='h-10 py-2 px-4' type="number" min='1' value={userField.age} name='age' onChange={handleChange} />
+                <input className='h-10 py-2 px-4' type="number" min='1' value={userField.age !== 0 ? userField.age : ""} name='age' onChange={handleChange} />
 
                 <div className='mt-4 '>
                     <input className='ml-2' type="radio" value="Male" name="gender" checked={userField.gender === "Male"} onChange={handleChange} /> Male
@@ -88,7 +87,7 @@ const Form: React.FC = () => {
                             setUserField({
                                 editUser: {},
                                 name: '',
-                                age: '',
+                                age: 0,
                                 gender: '',
 
                             })
