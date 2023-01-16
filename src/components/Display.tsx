@@ -1,21 +1,18 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux/es/exports'
-// import { Iuser } from '../screens/Homepage'
 import { handleDelete, handleEdit } from '../actions/index'
 import { RootState } from '../reducers';
 import { userInput } from './Form';
 
 
 
-
-
-const Card: React.FC = () => {
+const Display: React.FC = () => {
 
     const dispatch = useDispatch();
     const userList = useSelector((state: RootState) => state.reducerCrud.userList)
 
-    console.log(userList)
 
+    console.log(userList)
 
 
 
@@ -40,7 +37,7 @@ const Card: React.FC = () => {
                             <div className='  flex justify-end  text-center'>
 
                                 <button className=" bg-sky-600 hover:bg-sky-700 py-2 px-4 h-12 rounded mt-5 mr-4"
-                                    onClick={(userd) => { dispatch(handleEdit(user.id!)) }} >  Edit  </button>
+                                    onClick={() => { dispatch(handleEdit(user.id!)) }} >  Edit  </button>
                                 <button className=" bg-rose-400 hover:bg-rose-500 py-2 px-4 h-12  rounded  mt-5 mr-4"
                                     onClick={() => dispatch(handleDelete(user.id!))}>   Delete  </button>
                             </div>
@@ -52,4 +49,4 @@ const Card: React.FC = () => {
     )
 }
 
-export default Card
+export default Display
