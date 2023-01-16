@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { handleSubmit, Update } from '../actions';
+import { submitUserInput, Update } from '../actions';
 import { RootState } from '../reducers';
 
 
@@ -27,6 +27,23 @@ const Form: React.FC = () => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUserField({ ...userField, [e.target.name]: e.target.value })
+    }
+
+
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (userField.name === '' || userField.age === '' || userField.gender === '') {
+            alert("Please fill the details");
+        }
+        dispatch(submitUserInput(userField));
+        setUserField({
+            editUser: {},
+            name: '',
+            age: '',
+            gender: '',
+        })
     }
 
 
@@ -58,17 +75,7 @@ const Form: React.FC = () => {
 
             {
                 editUser === undefined ? <button className="bg-green-400  active:hover-bg-yellow py-2 px-4 w-32 rounded mt-2 " type="button"
-                    onClick={() => {
-                        dispatch(handleSubmit(userField));
-                        setUserField({
-                            editUser: {},
-                            name: '',
-                            age: '',
-                            gender: '',
-
-                        })
-
-                    }}>
+                    onClick={handleSubmit}>
                     SUBMIT
 
                 </button> :

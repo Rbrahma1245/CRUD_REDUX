@@ -28,7 +28,7 @@ interface UPDATE {
 
 
 
-export const handleSubmit = (data: userInput): ADD => {
+export const submitUserInput = (data: userInput): ADD => {
     return {
         type: "ADD",
         payload: {
