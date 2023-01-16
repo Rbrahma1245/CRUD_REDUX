@@ -37,13 +37,16 @@ const Form: React.FC = () => {
         if (userField.name === '' || userField.age === '' || userField.gender === '') {
             alert("Please fill the details");
         }
-        dispatch(submitUserInput(userField));
-        setUserField({
-            editUser: {},
-            name: '',
-            age: '',
-            gender: '',
-        })
+        else (
+            dispatch(submitUserInput(userField)),
+            setUserField({
+                editUser: {},
+                name: '',
+                age: '',
+                gender: '',
+            }
+            )
+        )
     }
 
 
