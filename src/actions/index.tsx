@@ -1,12 +1,13 @@
 import { userInput } from "../components/Form"
 
+export interface IAddPayload {
+    id: number;
+    data: userInput;
+}
 
 interface ADD {
     type: string;
-    payload: {
-        id: number;
-        data: userInput;
-    }
+    payload: IAddPayload;
 }
 interface DELETE {
     type: string;

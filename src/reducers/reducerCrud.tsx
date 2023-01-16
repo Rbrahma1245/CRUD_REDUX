@@ -1,27 +1,25 @@
-import { userAction } from "../actions";
+import { IAddPayload, userAction } from "../actions";
 import { userInput } from "../components/Form";
 
 
-export interface TInput {
+export interface Istate {
     editUser: userInput | undefined
     userList: userInput[];
 }
 
-
-
-const initialstate: TInput = {
+const initialstate: Istate = {
     editUser: undefined,
     userList: []
 };
 
 
 
-const reducerCrud = (state: TInput = initialstate, action: any) => {
+const reducerCrud = (state: Istate = initialstate, action: userAction) => {
 
     switch (action.type) {
 
         case "ADD":
-            const { id, data } = action.payload
+            const { id, data } = action.payload as IAddPayload;
 
             return {
                 ...state,
@@ -54,7 +52,7 @@ const reducerCrud = (state: TInput = initialstate, action: any) => {
         case "UPDATE":
 
             console.log(state)
-            const { name, age, gender } = action.payload
+            const { name, age, gender } = action.payload as userInput;
 
             const newUpdatedList = state.userList.map((currElem: userInput) => {
                 if (currElem.id === state.editUser?.id) {
